@@ -264,4 +264,14 @@ public class RNABeacon extends ReactContextBaseJavaModule{
 			beaconManager.unbind(rangingConsumer);
 		}catch (Exception e){}
 	}
+    
+    @ReactMethod
+    public void addBeaconParser(String beaconLayout) {
+        beaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(beaconLayout));
+    }
+    
+    @ReactMethod
+    public void clearBeaconParser() {
+        beaconManager.getBeaconParsers().clear();
+    }
 }

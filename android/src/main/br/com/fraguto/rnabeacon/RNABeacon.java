@@ -79,4 +79,12 @@ public void startTransmitting(String uuid, ReadableMap params, Callback onSucces
 public void stopTransmitting(ReadableMap params, Callback onSuccess, Callback onError){
 
 }
+
+public void addBeaconParser(String beaconLayout) {
+
+}
+ 
+public void clearBeaconParser() {
+
+}
 }
