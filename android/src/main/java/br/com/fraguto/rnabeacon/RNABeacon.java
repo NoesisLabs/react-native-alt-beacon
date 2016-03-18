@@ -213,6 +213,8 @@ public class RNABeacon extends ReactContextBaseJavaModule{
 						}
 						map.putArray("beacons", a);
 						sendEvent(context, "didFoundBeacons",  map);
+					} else {
+						sendEvent(context, "noBeaconsFound", map);
 					}
 				}
 			});
@@ -256,6 +258,20 @@ public class RNABeacon extends ReactContextBaseJavaModule{
 	}
 
 	@ReactMethod
+	public void stopMonitoring(String uuid) {
+		beaconManager = BeaconManager.getInstanceForApplication(applicationContext);
+		beaconManager.unbind(monitoringConsumer);
+		sendEvent(context, "stopMonitoring", null);
+	}
+
+	@ReactMethod
+	public void stopRanging() {
+		beaconManager = BeaconManager.getInstanceForApplication(applicationContext);
+		beaconManager.unbind(rangingConsumer);
+		sendEvent(context, "stopRanging", null);
+	}
+	
+	@ReactMethod
 	public void unbind(){
 		try{
 			beaconManager.unbind(monitoringConsumer);
@@ -271,7 +287,7 @@ public class RNABeacon extends ReactContextBaseJavaModule{
     }
     
     @ReactMethod
-    public void clearBeaconParser() {
+    public void clearBeaconParsers() {
         beaconManager.getBeaconParsers().clear();
     }
 }

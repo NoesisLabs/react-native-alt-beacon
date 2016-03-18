@@ -1,21 +1,22 @@
 declare namespace RNABeacon {
 
     interface callback {
-        (): any
+        (): any;
     }
    
     interface resultCallback {
-        (result: number): any
+        (result: number): any;
     }
     
     interface RNABeaconStatic {
         addBeaconParser(beaconLayout: string): void;
-        checkTransmissionSupported(callback: resultCallback): void
-        clearBeaconParsers(): void   
-        startTransmitting(uuid: string, params: any, onSuccess: callback, onError: resultCallback): void
-        startMonitoring(uuid: string): void
-        startRanging(uuid: string): void
-        unbind(): void
+        checkTransmissionSupported(callback: resultCallback): void;
+        clearBeaconParsers(): void;
+        startTransmitting(uuid: string, params: any, onSuccess: callback, onError: resultCallback): void;
+        startMonitoring(uuid: string): void;
+        startRanging(uuid: string): void;
+		stopMonitoring(): void;
+		stopRanging(): void;
     }
 }
 
